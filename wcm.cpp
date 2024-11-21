@@ -54,9 +54,8 @@ int main() {
     int center = 1024;
     int width = 100;
     float_t a = 0.5;
-    float_t b = 0.5;
-    float_t dark_charge = calculate_dark_charge(vector, center, width, a, b);
     float_t baseline = baseline_correction(vector, center, width, a);
+    float_t dark_charge = calculate_dark_charge(vector, center, width, a, baseline);
     printf("Dark charge: %f\n", dark_charge);
     printf("Baseline: %f\n", baseline);
     return 0;
