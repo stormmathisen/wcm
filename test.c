@@ -23,9 +23,9 @@ int main() {
     int waveform[2048];
     read_waveform("waveform.csv", waveform);
     printf("Waveform: %d\n", waveform[1024]);
-    float_t baseline = baseline_correction(waveform, 1000, 100, 0.1);
+    float_t baseline = baseline_correction(waveform, 1024, 100, 0.1);
     printf("Baseline: %f\n", baseline);
-    float_t dark_charge = calculate_dark_charge(waveform, 1000, 100, 0.1, baseline);
+    float_t dark_charge = calculate_dark_charge(waveform, 1024, 100, 0.1, baseline);
     printf("Dark charge: %f\n", dark_charge);
     return 0;
 }
