@@ -22,9 +22,10 @@ void read_waveform(char *filename, int *waveform) {
 int main() {
     int waveform[2048];
     read_waveform("waveform.csv", waveform);
-    float_t dark_charge = calculate_dark_charge(waveform, 1000, 100, 0.1, 0.5);
-    printf("Dark charge: %f\n", dark_charge);
+    printf("Waveform: %d\n", waveform[1024]);
     float_t baseline = baseline_correction(waveform, 1000, 100, 0.1);
     printf("Baseline: %f\n", baseline);
+    float_t dark_charge = calculate_dark_charge(waveform, 1000, 100, 0.1, baseline);
+    printf("Dark charge: %f\n", dark_charge);
     return 0;
 }
