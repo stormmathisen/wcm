@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "wcm.h"
 
 // Slice the source array from start to end and copy it to the destination array
 void slice(int *source, int start, int end, int *destination) {
@@ -40,23 +40,4 @@ float_t baseline_correction(int vector[2048], int center, int width, int a) {
     }
     free(cropped_vector);
     return baseline;
-}
-
-
-
-
-int main() {
-    int vector[2048];
-    // Fill vector with some values
-    for (int i = 0; i < 2048; i++) {
-        vector[i] = i;
-    }
-    int center = 1024;
-    int width = 100;
-    float_t a = 0.5;
-    float_t baseline = baseline_correction(vector, center, width, a);
-    float_t dark_charge = calculate_dark_charge(vector, center, width, a, baseline);
-    printf("Dark charge: %f\n", dark_charge);
-    printf("Baseline: %f\n", baseline);
-    return 0;
 }
