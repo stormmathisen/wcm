@@ -30,7 +30,7 @@ int main() {
     float_t dark_charge = calculate_dark_charge(waveform, 900, 200, 2, baseline);
     printf("Dark charge: %f\n", dark_charge);
 
-    float_t bunch_charge = calculate_bunch_charge(waveform, 800, 900, 10, 2);
+    float_t bunch_charge = calculate_bunch_charge(waveform, 935, 950, 10, 2);
     printf("Bunch charge: %f\n", bunch_charge);
 
     return 0;
