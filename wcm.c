@@ -16,7 +16,7 @@ void slice(int *source, int start, int end, int *destination) {
 //Center: CLA-S01-DIA-WCM-01:DARK_CHARGE:WINDOW-CENTER
 //Width: CLA-S01-DIA-WCM-01:DARK_CHARGE:WINDOW-WIDTH
 //a: CLA-S01-DIA-WCM-01:DARK_CHARGE:CALIBRATION-FACTOR
-//b: CLA-S01-DIA-WCM-01:B
+//b: CLA-S01-DIA-WCM-01:DARK_CHARGE:BASELINE
 //dark_charge: CLA-S01-DIA-WCM-01:DARK_CHARGE
 float_t calculate_dark_charge(int vector[2048], int center, int width, float_t a, float_t b) {
     float_t dark_charge = 0;
@@ -33,8 +33,9 @@ float_t calculate_dark_charge(int vector[2048], int center, int width, float_t a
 
 // Calculate average value in window and subtract it from the vector
 //Vector: EBT-B03-IOC-CS-04:FMC1:CH0-COUNTS
-//Center: CLA-S01-DIA-WCM-01:B:WINDOW-CENTER
-//Width: CLA-S01-DIA-WCM-01:B:WINDOW-WIDTH
+//Center: CLA-S01-DIA-WCM-01:DARK_CHARGE:BASELINE-CENTER
+//Width: CLA-S01-DIA-WCM-01:DARK_CHARGE:BASELINE-WIDTH
+//baseline: CLA-S01-DIA-WCM-01:DARK_CHARGE:BASELINE
 float_t baseline_correction(int vector[2048], int center, int width) {
     float_t baseline = 0;
     int start = center - width / 2;
@@ -50,6 +51,12 @@ float_t baseline_correction(int vector[2048], int center, int width) {
 }
 
 //Calculate the bunch charge, by taking the average of values at the peak, and at the base, and subtracting the base from the peak. A is calibration factor
+//Vector: EBT-B03-IOC-CS-04:FMC1:CH0-COUNTS
+//Base: CLA-S01-DIA-WCM-01:Q:BASE
+//Peak: CLA-S01-DIA-WCM-01:Q:PEAK
+//Width: CLA-S01-DIA-WCM-01:Q:WIDTH
+//a: CLA-S01-DIA-WCM-01:Q:A
+//bunch_charge: CLA-S01-DIA-WCM-01:Q
 float_t calculate_bunch_charge(int vector[2048], int base, int peak, int width, float_t a) {
     float_t peak_value = 0;
     float_t baseline = 0;
