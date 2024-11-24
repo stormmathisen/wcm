@@ -22,8 +22,7 @@ void read_waveform(char *filename, int *waveform) {
 int main() {
     int waveform[2048];
     read_waveform("waveform.csv", waveform);
-    printf("Waveform: %d\n", waveform[1024]);
-    
+        
     float_t baseline = baseline_correction(waveform, 300, 200, 0);
     printf("Baseline: %f\n", baseline);
 

@@ -35,9 +35,6 @@ float_t baseline_correction(int vector[2048], int center, int width, int a) {
         baseline += cropped_vector[i];
     }
     baseline /= width;
-    for (int i = 0; i < width; i++) {
-        cropped_vector[i] -= baseline;
-    }
     free(cropped_vector);
     return baseline;
 }
