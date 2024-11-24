@@ -23,7 +23,7 @@ int main() {
     int waveform[2048];
     read_waveform("waveform.csv", waveform);
         
-    float_t baseline = baseline_correction(waveform, 300, 200, 0);
+    float_t baseline = baseline_correction(waveform, 300, 200);
     printf("Baseline: %f\n", baseline);
 
     float_t dark_charge = calculate_dark_charge(waveform, 900, 200, 2, baseline);
